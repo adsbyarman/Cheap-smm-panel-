@@ -2385,8 +2385,13 @@ function initPayment(service, price, username) {
                 }, 1000);
             };
 
-            // ===== SUCCESS =====
+            // ===== SUCCESS ====
+    }
             function showSuccess() {
+                fbq('track', 'Purchase', {
+    value: parseFloat(price),
+    currency: 'INR'
+});
                 const orderId = "FF" + String(Math.floor(Math.random() * 900000 + 100000));
                 document.getElementById("orderIdDisplay").textContent = orderId;
                 document.getElementById("successOverlay").classList.add("active");
